@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 23, 2022 at 08:08 AM
+-- Generation Time: Jan 23, 2022 at 09:34 AM
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 8.1.1
 
@@ -30,8 +30,16 @@ SET time_zone = "+00:00";
 CREATE TABLE `pelanggan` (
   `id_pelanggan` int(11) NOT NULL,
   `nama` varchar(50) NOT NULL,
-  `tanggal` datetime NOT NULL DEFAULT current_timestamp()
+  `tanggal` date NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `pelanggan`
+--
+
+INSERT INTO `pelanggan` (`id_pelanggan`, `nama`, `tanggal`) VALUES
+(23, 'adek', '2022-01-23'),
+(24, 'yehe', '2022-01-23');
 
 -- --------------------------------------------------------
 
@@ -77,7 +85,7 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `pelanggan`
 --
 ALTER TABLE `pelanggan`
-  MODIFY `id_pelanggan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+  MODIFY `id_pelanggan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 
 DELIMITER $$
 --
