@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 23, 2022 at 09:34 AM
+-- Generation Time: Jan 23, 2022 at 03:01 PM
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 8.1.1
 
@@ -38,8 +38,8 @@ CREATE TABLE `pelanggan` (
 --
 
 INSERT INTO `pelanggan` (`id_pelanggan`, `nama`, `tanggal`) VALUES
-(23, 'adek', '2022-01-23'),
-(24, 'yehe', '2022-01-23');
+(1, 'hollaaa', '2022-01-23'),
+(2, 'adek', '2022-01-23');
 
 -- --------------------------------------------------------
 
@@ -85,13 +85,19 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `pelanggan`
 --
 ALTER TABLE `pelanggan`
-  MODIFY `id_pelanggan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+  MODIFY `id_pelanggan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 DELIMITER $$
 --
 -- Events
 --
-CREATE DEFINER=`root`@`localhost` EVENT `hapus_pelanggan` ON SCHEDULE EVERY 1 MONTH STARTS '2022-01-23 11:04:24' ON COMPLETION NOT PRESERVE ENABLE DO DELETE FROM pelanggan where pelanggan.tanggal < now()$$
+CREATE DEFINER=`root`@`localhost` EVENT `hapus_pelanggan` ON SCHEDULE EVERY 1 MONTH STARTS '2022-01-23 20:57:00' ON COMPLETION NOT PRESERVE ENABLE DO BEGIN
+DELETE FROM pelanggan where pelanggan.tanggal < now();
+
+ALTER TABLE pelanggan DROP id_pelanggan;
+
+ALTER TABLE  `pelanggan` ADD `id_pelanggan` INT NOT NULL AUTO_INCREMENT PRIMARY KEY FIRST;
+END$$
 
 DELIMITER ;
 COMMIT;
