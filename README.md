@@ -8,7 +8,6 @@
 [![Follow Us!](https://img.shields.io/badge/follow-instagram-blueviolet)](https://www.instagram.com/yehezikabeatrix/)
 [![Follow Us!](https://img.shields.io/badge/follow-instagram-blueviolet)](https://www.instagram.com/adekmzrk/)
 
-
 ## Made with Love by ❤️ :
 <a href="https://github.com/yehezikabeatrix/ThanksCoffee/graphs/contributors">
   <img src="https://contributors-img.web.app/image?repo=yehezikabeatrix/ThanksCoffee" />
