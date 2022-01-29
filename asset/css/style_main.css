@@ -1,6 +1,6 @@
 @font-face {
     font-family: 'Poppins'; 
-    src: url('Poppins-Regular.otf');
+    src: url('..\font\Poppins-Regular.otf');
 }
 
 * {
