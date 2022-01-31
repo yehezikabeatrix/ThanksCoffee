@@ -1,6 +1,6 @@
 <?php
 
-include '../db/functions.php';
+include '../db/koneksi.php';
 $pdo = pdo_connect();
 
 if(isset($_POST['submit'])){

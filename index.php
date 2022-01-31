@@ -1,4 +1,4 @@
-<?php  include "db/functions.php";?>
+<?php  include "db/koneksi.php";?>
 <?php require_once("validate.php"); ?> 
 
 <!DOCTYPE html>
@@ -21,7 +21,7 @@
                 <li> <a href="#promo">Promo</a></li>
                 <li> <a href="#product">Product</a></li>
                 <li> <a href="#testimonial">Testimoni</a></li>
-                <li> <a href="#" class="active"><b>Buy Now</b></a></li>
+                <li> <a href="cart/index.php" class="active"><b>Buy Now</b></a></li>
             </ul>
         </header>
     </div>
@@ -43,7 +43,7 @@
         <img src="asset\mainpage\daun_kanan.png" id="daun_kanan">
         <img src="asset\mainpage\daun_kiri.png" id="daun_kiri">
         
-        <a href="#" id="btn-buy_now"><b>Buy Now</b></a>
+        <a href="cart/index.php" id="btn-buy_now"><b>Buy Now</b></a>
         <a href="#promo" id="btn-look_around">Look Around
             <img src="asset\icon\arrow-down-outline.png"/>
         </a>
@@ -83,7 +83,6 @@
             </div>
         </div>
     </section>
-
 
     <section id="product">
         <div class="tittle-text">
@@ -287,7 +286,7 @@
             <div class="inputBox">
                 <input type="text" placeholder="name">
                 <input type="email" placeholder="email">
-                <input type="text" placeholder="akun instagram">
+                <input type="text" placeholder="@instagram">
             </div>
 
             <textarea placeholder="message" name="" id="" cols="30" rows="10"></textarea>
@@ -313,7 +312,7 @@
                     <h2 class="nav__title">Action</h2>
                     <ul class="nav__ul">
                         <li> <a href="#home">Go up</a> </li>
-                        <li> <a href="#">Buy Now</a> </li>
+                        <li> <a href="cart/index.php">Buy Now</a> </li>
                         <li> <a href="logout.php">Log Out</a> </li>
                     </ul>
                 </li>
