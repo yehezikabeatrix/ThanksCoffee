@@ -1,4 +1,4 @@
-<?php include "../db/functions.php";?>
+<?php include "../db/koneksi.php";?>
 <?php require_once("validate.php"); ?>
 <?php include 'header.php'; ?>
 <?php include 'menu.php'; ?>
