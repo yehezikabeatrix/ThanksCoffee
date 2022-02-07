@@ -8,18 +8,17 @@ if(isset($_POST['submit'])){
     $nama = $_POST["nama_pelanggan"];
     $tanggal = date("Y-m-d");
 
-    $check_nama = $pdo->prepare('SELECT * from pelanggan WHERE nama = ? AND tanggal = ?');
+    $check_nama = $pdo->prepare('SELECT * from pelanggan WHERE nama_pelanggan = ? AND tanggal = ?');
     $check_nama->execute([$nama, $tanggal]);
 
     $check = $check_nama->fetch(PDO::FETCH_ASSOC);
 
     if($check) {
-        if ($nama == $check["nama"]){
-            $nama_error = "Maaf... nama sudah ada";
-            /* echo '<script type="text/javascript">alert("Use another name");window.location=\'login.php\';</script>'; */
+        if ($nama == $check["nama_pelanggan"]){
+            $nama_error = "Maaf username $nama sudah ada !";
         }
     } else {
-        $stmt = $pdo->prepare('INSERT INTO pelanggan (nama) VALUES(:nama)');
+        $stmt = $pdo->prepare('INSERT INTO pelanggan (nama_pelanggan) VALUES(:nama)');
         $stmt->execute(array(':nama' => $nama));
         
         // buat Session
@@ -43,7 +42,7 @@ if(isset($_POST['submit'])){
     <form action="" method="POST" id="tambahPelanggan"> 
 
         <div class="tambahPelanggan">
-            <input type="text" name="nama_pelanggan" placeholder="Masukkan nama ..." required>
+            <input type="text" name="nama_pelanggan" placeholder="Masukkan username..." required>
             
             <?php if (isset($nama_error)) : ?>
                 <div class="alert">

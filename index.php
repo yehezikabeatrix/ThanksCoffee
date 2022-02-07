@@ -1,6 +1,11 @@
 <?php  include "db/koneksi.php";?>
 <?php require_once("validate.php"); ?> 
 
+<?php 
+$toko = mysqli_query($koneksi, "SELECT * FROM setting");
+$dataToko = $toko->fetch_assoc(); 
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -19,7 +24,7 @@
 
             <ul>
                 <li> <a href="#promo">Promo</a></li>
-                <li> <a href="#product">Product</a></li>
+                <li> <a href="#product-slider">Product</a></li>
                 <li> <a href="#testimonial">Testimoni</a></li>
                 <li> <a href="cart/index.php" class="active"><b>Buy Now</b></a></li>
             </ul>
@@ -298,11 +303,12 @@
 
     <section id="footer">
         <div class="footer">
-            <div class="footer__addr">
-                <h1 class="footer__logo">ThanksCoffee</h1>
+        <div class="footer__addr">
+                <h1 class="footer__logo"> <?= $dataToko['nama_cabang'] ?> </h1>
                 <h2>Contact</h2>
                 <address>
-                    Ciseeng, Bogor, Indonesia - 0876299901<br> 
+                   <?= $dataToko['alamat_cabang'] ?> <br> 
+                   <?= $dataToko['nomor_telepon'] ?> <br> 
                     <a class="footer__btn" href="mailto:example@gmail.com">Email Us</a>
                 </address>
             </div>

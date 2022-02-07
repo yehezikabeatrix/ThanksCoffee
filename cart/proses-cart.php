@@ -3,7 +3,8 @@ include "../db/koneksi.php";
 
 session_start();
 $nama = $_SESSION['pelanggan'];
-$id_pelanggan = mysqli_query($koneksi, "SELECT id_pelanggan from pelanggan WHERE nama = '$nama'");
+$date = date("Y-m-d");
+$id_pelanggan = mysqli_query($koneksi, "SELECT id_pelanggan from pelanggan WHERE nama_pelanggan  = '$nama' AND tanggal = '$date'");
 
 $id_pelanggan2 = $id_pelanggan->fetch_assoc();
 $kode_pelanggan = $id_pelanggan2['id_pelanggan'];
@@ -72,6 +73,19 @@ switch ($request) {
                 
                 break;
             
+            case 'add_transaksi' :
+                $total = $_POST['total'];
+
+                $add_transaksi = mysqli_query($koneksi, "INSERT INTO transaksi (id_pelanggan, total, status) VALUES ('$kode_pelanggan', '$total', '0')");
+                
+                if(add_transaksi){
+                    echo json_encode(["message" => "success"]);
+                } else {
+                    echo json_encode(["message" => "failed"]);
+                }
+                
+                break;    
+
             default:
                 # code...
                 break;

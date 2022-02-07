@@ -1,6 +1,11 @@
 <?php  include "../db/koneksi.php";?>
 <?php require_once("validate.php"); ?> 
 
+<?php 
+$toko = mysqli_query($koneksi, "SELECT * FROM setting");
+$dataToko = $toko->fetch_assoc(); 
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -32,32 +37,33 @@
     <div id="footer">
         <div class="footer">
             <div class="footer__addr">
-                <h1 class="footer__logo">ThanksCoffee</h1>
+                <h1 class="footer__logo"> <?= $dataToko['nama_cabang'] ?> </h1>
                 <h2>Contact</h2>
                 <address>
-                    Ciseeng, Bogor, Indonesia - 0876299901<br> 
+                   <?= $dataToko['alamat_cabang'] ?> <br> 
+                   <?= $dataToko['nomor_telepon'] ?> <br> 
                     <a class="footer__btn" href="mailto:example@gmail.com">Email Us</a>
                 </address>
             </div>
             
             <ul class="footer__nav">
                 <li class="nav__item">
-                    <h2 class="nav__title">Action</h2>
+                    <h2 class="nav__title">Custom Links</h2>
                     <ul class="nav__ul">
-                        <li> <a href="#home">Go up</a> </li>
-                        <li> <a href="#">Buy Now</a> </li>
+                        <li> <a href="#">Go up</a> </li>
+                        <li> <a href="../index.php">Back to Home</a> </li>
                         <li> <a href="../logout.php">Log Out</a> </li>
                     </ul>
                 </li>
                 
                 <li class="nav__item nav__item--extra">
-                    <h2 class="nav__title">Custom Links</h2>
+                    <h2 class="nav__title">Product</h2>
                     <ul class="nav__ul nav__ul--extra">
-                        <li> <a href="../index.php#promo">Promo</a> </li>
-                        <li> <a href="../index.php#product">Why Us</a> </li>
-                        <li> <a href="../index.php#product-slider">Product</a> </li>
-                        <li> <a href="../index.php#testimonial">Testimoni</a></li>
-                        <li> <a href="../index.php#feedback">Feedback</a> </li>
+                        <li> <a href="#coffee">Coffee</a> </li>
+                        <li> <a href="#non_coffee">Non Coffee</a> </li>
+                        <li> <a href="#snack">Snack</a> </li>
+                        <li> <a href="#beans">Beans</a></li>
+                        <li> <a href="#merch">Merch</a> </li>
                     </ul>
                 </li>
                 
@@ -140,6 +146,18 @@
             });
             countCart();
             $('#konten').load('cart.php');
+        }
+
+        function add_transaksi($total){
+            $.ajax({
+                type: "POST",
+                url: "proses-cart.php",
+                data: {"proses" : "add_transaksi",'total' : $total},
+                dataType: "JSON",
+                success: function (response) {
+                    console.log(response);
+                }
+            });
         }
 
     </script>

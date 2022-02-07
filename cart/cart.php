@@ -1,15 +1,18 @@
 <?php 
 include "../db/koneksi.php";
+require_once("validate.php");
 include "helper.php";
 
-session_start();
 $nama = $_SESSION['pelanggan'];
-$id_pelanggan = mysqli_query($koneksi, "SELECT id_pelanggan from pelanggan WHERE nama = '$nama'");
+$date = date("Y-m-d");
+$id_pelanggan = mysqli_query($koneksi, "SELECT id_pelanggan from pelanggan WHERE nama_pelanggan  = '$nama' AND tanggal = '$date'");
 
 $id_pelanggan2 = $id_pelanggan->fetch_assoc();
 $kode_pelanggan = $id_pelanggan2['id_pelanggan'];
 
 $dataCart = mysqli_query($koneksi, "SELECT * FROM cart c JOIN product p ON c.kode_product = p.id_product WHERE c.kode_pelanggan = '$kode_pelanggan' ORDER BY p.nama ASC");
+
+
 ?>
 
 <section id="cart" class="cart">
@@ -40,13 +43,14 @@ $dataCart = mysqli_query($koneksi, "SELECT * FROM cart c JOIN product p ON c.kod
             </table>
         </div>
 
-        <div class="check-out">
+        <div class="check-out" >
             <div class="checkout-body">
                 <h4 class="checkout-tittle">Checkout Bill</h4>
-                <p class="checkout-total">Total : Rp <?php echo rupiah($total); ?></p>
+                <p class="checkout-total" >Total : Rp <?php echo rupiah($total); ?></p>
             </div>
             <div class="checkout-footer">
-                <a href="#" class="btn">Checkout Now</a>
+                <a onclick="add_transaksi(<?=$total?>)" href="print_bill.php" class="btn">Checkout Now</a>
             </div>
         </div>
 </section>
+
