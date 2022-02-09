@@ -20,6 +20,7 @@ if(isset($_POST['submit'])){
         if($password == $user["password"]){
             // buat Session
             session_start();
+            $user["time"] = date("d-m-Y h:i:s A");
             $_SESSION["user"] = $user;
             header("location:index.php");
         }

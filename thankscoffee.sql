@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 07, 2022 at 01:55 AM
+-- Generation Time: Feb 09, 2022 at 03:03 PM
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 8.1.1
 
@@ -45,7 +45,9 @@ INSERT INTO `cart` (`id_cart`, `kode_pelanggan`, `kode_product`, `jumlah`, `dibu
 (110, 125, 3, 1, '2022-02-07 07:38:45'),
 (111, 126, 3, 1, '2022-02-07 07:47:21'),
 (112, 127, 1, 1, '2022-02-07 07:54:23'),
-(113, 127, 2, 1, '2022-02-07 07:54:24');
+(113, 127, 2, 1, '2022-02-07 07:54:24'),
+(114, 128, 1, 1, '2022-02-09 09:03:45'),
+(115, 128, 2, 1, '2022-02-09 09:03:46');
 
 -- --------------------------------------------------------
 
@@ -66,7 +68,8 @@ CREATE TABLE `pelanggan` (
 INSERT INTO `pelanggan` (`id_pelanggan`, `nama_pelanggan`, `tanggal`) VALUES
 (125, 'adek', '2022-02-07'),
 (126, 'halo', '2022-02-07'),
-(127, 'lala', '2022-02-07');
+(127, 'lala', '2022-02-07'),
+(128, 'ado', '2022-02-09');
 
 -- --------------------------------------------------------
 
@@ -133,7 +136,8 @@ CREATE TABLE `transaksi` (
 INSERT INTO `transaksi` (`id_transaksi`, `id_pelanggan`, `total`, `bayar`, `kembalian`, `status`) VALUES
 (24, 125, 48000, 0, 0, 0),
 (25, 126, 20000, 0, 0, 0),
-(26, 127, 28000, 0, 0, 0);
+(26, 127, 28000, 0, 0, 0),
+(27, 128, 28000, 0, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -201,13 +205,13 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `cart`
 --
 ALTER TABLE `cart`
-  MODIFY `id_cart` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=114;
+  MODIFY `id_cart` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=116;
 
 --
 -- AUTO_INCREMENT for table `pelanggan`
 --
 ALTER TABLE `pelanggan`
-  MODIFY `id_pelanggan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=128;
+  MODIFY `id_pelanggan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=129;
 
 --
 -- AUTO_INCREMENT for table `product`
@@ -219,7 +223,7 @@ ALTER TABLE `product`
 -- AUTO_INCREMENT for table `transaksi`
 --
 ALTER TABLE `transaksi`
-  MODIFY `id_transaksi` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
+  MODIFY `id_transaksi` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 
 --
 -- Constraints for dumped tables

@@ -30,7 +30,7 @@
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
                     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                        <li><a class="dropdown-item" href="profil.php">Profile</a></li>
+                        <li><a class="dropdown-item" href="#!">Settings</a></li>
                         <li><a class="dropdown-item" href="#!">Activity Log</a></li>
                         <li><hr class="dropdown-divider" /></li>
                         <li><a class="dropdown-item" href="logout.php">Logout</a></li>
@@ -51,16 +51,17 @@
                             <a class="nav-link" href="order.php">
                                 <div class="sb-nav-link-icon"><i class="fas fa-bell"></i></div>
                                 Order
+
                             </a>
                             <a class="nav-link" href="stock.php">
                                 <div class="sb-nav-link-icon"><i class="far fa-eye"></i></div>
                                 Stock
                             </a>
-
                             <a class="nav-link" href="pengaturan.php">
                                 <div class="sb-nav-link-icon"><i class="fa fa-cog"></i></div>
                                 Setting
                             </a>
+
 
 
                             
@@ -84,88 +85,55 @@
             <div id="layoutSidenav_content">
                 <main>
                     <div class="container-fluid px-4">
-                        <h1 class="mt-4">Home</h1>
+                        <h1 class="mt-4">Profile</h1>
                         <ol class="breadcrumb mb-4">
                             <li class="breadcrumb-item active">Welcome <?php  echo ($_SESSION['user']['username']); ?> </li>
                         </ol>
+                        <center><img src="https://placekitten.com/300/300" class = "rounded-circle" style="width: 200px; height:200px;"></center><br/>
+                        
                         <div class="row">
-                            <div class="col-xl-4 col-md">
+                            <div class="">
                                 <div class="card bg-primary text-white mb-4">
-                                    <div class="card-body"><h2>Jumlah Produk</h2><br/>
+                                    <div class="card-body"><h2>Nama</h2>
                                     <?php
-                                        $sql = "SELECT id_product FROM product WHERE 1";
-                                        $result = mysqli_query($koneksi,$sql);
-                                        echo "<h3>".(mysqli_num_rows($result))."</h3>";
-                                        
-
+                                        echo "<p>".ucfirst($_SESSION["user"]["username"])."</p>";
                                     ?>
                                 </div>
-                                    <div class="card-footer d-flex align-items-center justify-content-between">
-                                        <a class="small text-white stretched-link" href="stock.php">Cek</a>
-                                        <div class="small text-white"></div>
-                                    </div>
                                 </div>
                             </div>
-                            <div class="col-xl-4 col-md">
+                            <div class="">
                                 <div class="card bg-warning text-white mb-4">
-                                    <div class="card-body"><h2>Stok Produk Hari Ini</h2><br/>
-                                    <h3>23</h3>
+                                    <div class="card-body"><h2>Password</h2>
+                                    <p><i>secured</i></p>
                                 </div>
-                                    <div class="card-footer d-flex align-items-center justify-content-between">
-                                        <a class="small text-white stretched-link" href="stock.php">Cek</a>
-                                        <div class="small text-white"></div>
-                                    </div>
+                                
                                 </div>
                             </div>
-                            <div class="col-xl-4 col-md">
+                            <div class="">
                                 <div class="card bg-success text-white mb-4">
-                                    <div class="card-body"><h2>Telah terjual hari ini</h2>
+                                    <div class="card-body"><h2>Jabatan</h2>
                                     <?php
-                                    $tgl = date("Y-m-d");
-                                    //$tgl = "2022-01-31";
-                                    echo "Tanggal : ".$tgl;
-
-                                    $sql = "SELECT SUM(jumlah) as jumlah FROM cart WHERE dibuat LIKE ".'"%'.$tgl.'%"';
-                                        $result = mysqli_query($koneksi,$sql);
-                                        $result = mysqli_fetch_array($result);
-                                        if(is_null($result[0])){
-                                            echo "<h3>0</h3>";
-                                        }
-                                        else{
-                                            echo "<h3>".($result[0])."</h3>";
-                                        }
+                                    echo "<p>".ucfirst($_SESSION["user"]["jabatan"])."</p>";
+                                    
 
                                     ?>
                                 </div>
-                                    <div class="card-footer d-flex align-items-center justify-content-between">
-                                        <a class="small text-white stretched-link" href="order.php">Cek</a>
-                                        <div class="small text-white"></div>
-                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-xl-6">
-                                <div class="card mb-4">
-                                    <div class="card-header">
-                                        <i class="fas fa-chart-area me-1"></i>
-                                        Area Chart Example
-                                    </div>
-                                    <div class="card-body"><canvas id="myAreaChart" width="100%" height="40"></canvas></div>
+                            <div class="">
+                                <div class="card bg-danger text-white mb-4">
+                                    <div class="card-body"><h2>Waktu login</h2>
+                                    <?php
+                                    echo "<p>".ucfirst($_SESSION["user"]["time"])."</p>";
+                                    
+
+                                    ?>
                                 </div>
-                            </div>
-                            <div class="col-xl-6">
-                                <div class="card mb-4">
-                                    <div class="card-header">
-                                        <i class="fas fa-chart-bar me-1"></i>
-                                        Bar Chart Example
-                                    </div>
-                                    <div class="card-body"><canvas id="myBarChart" width="100%" height="40"></canvas></div>
                                 </div>
                             </div>
                         </div>
                         
-                    
+                        
                     </div>
                 </main>
                 <footer class="py-4 bg-light mt-auto">

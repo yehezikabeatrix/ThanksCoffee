@@ -1,9 +1,18 @@
 <?php
-    session_start();
-    if(!isset($_SESSION['user'])) header("location:login.php");
-    include '../db/koneksi.php';
+include '../db/koneksi.php';
+if(isset($_GET['status'])){
+    if($_GET['status']=="1"){
+        echo "<script>alert('Pembayaran berhasil!');</script>";
+    }
+}else{
+}
+if(isset($_GET['kembali'])){
+    echo "<script>alert('Pembayaran berhasil! kembali = Rp".$_GET['kembali']."');</script>";
+}
+if(isset($_GET['kurang'])){
+    echo "<script>alert('Pembayaran gagal!! kurang = Rp".$_GET['kurang']."');</script>";
+}
 ?>
-
 
 <!DOCTYPE html>
 <html lang="en">
@@ -13,7 +22,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="" />
         <meta name="author" content="" />
-        <title>Data Pesanan</title>
+        <title>Data Order</title>
         <link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet" />
         <link href="css/styles.css" rel="stylesheet" />
         <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js" crossorigin="anonymous"></script>
@@ -77,95 +86,115 @@
                     </div>
                     <div class="sb-sidenav-footer">
                         <div class="small">Logged in as:</div>
-                        <?php  echo ($_SESSION['user']['username']); ?>
+                        ThanksCoffee Admin
                     </div>
                 </nav>
             </div>
             <div id="layoutSidenav_content">
                 <main>
                     <div class="container-fluid px-4">
-                        <h1 class="mt-4">Home</h1>
+                        <h1 class="mt-4">Incoming Order</h1>
                         <ol class="breadcrumb mb-4">
-                            <li class="breadcrumb-item active">Welcome <?php  echo ($_SESSION['user']['username']); ?> </li>
+                            <li class="breadcrumb-item active">Hurry up!</li>
                         </ol>
                         <div class="row">
-                            <div class="col-xl-4 col-md">
+                            <div class="col-xl-3 col-md-6">
                                 <div class="card bg-primary text-white mb-4">
-                                    <div class="card-body"><h2>Jumlah Produk</h2><br/>
+                                    <div class="card-body"><h2>Order Completed</h2>
                                     <?php
-                                        $sql = "SELECT id_product FROM product WHERE 1";
-                                        $result = mysqli_query($koneksi,$sql);
-                                        echo "<h3>".(mysqli_num_rows($result))."</h3>";
+                                    $sql = "SELECT id_transaksi FROM transaksi WHERE status = 1";
+                                    $result = mysqli_query($koneksi,$sql);
+                                    
+                                    $result = mysqli_num_rows($result);
+                                    if(is_null($result)){
+                                        echo "<h3>0</h3>";
+                                    }
+                                    else{
+                                        echo "<h3>".($result)."</h3>";
+                                    }
+                                    
                                         
-
                                     ?>
-                                </div>
-                                    <div class="card-footer d-flex align-items-center justify-content-between">
-                                        <a class="small text-white stretched-link" href="stock.php">Cek</a>
-                                        <div class="small text-white"></div>
+
                                     </div>
+
                                 </div>
                             </div>
-                            <div class="col-xl-4 col-md">
+                            <div class="col-xl-3 col-md-6">
                                 <div class="card bg-warning text-white mb-4">
-                                    <div class="card-body"><h2>Stok Produk Hari Ini</h2><br/>
-                                    <h3>23</h3>
-                                </div>
-                                    <div class="card-footer d-flex align-items-center justify-content-between">
-                                        <a class="small text-white stretched-link" href="stock.php">Cek</a>
-                                        <div class="small text-white"></div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-xl-4 col-md">
-                                <div class="card bg-success text-white mb-4">
-                                    <div class="card-body"><h2>Telah terjual hari ini</h2>
+                                    <div class="card-body"><h2>New Order</h2>
                                     <?php
-                                    $tgl = date("Y-m-d");
-                                    //$tgl = "2022-01-31";
-                                    echo "Tanggal : ".$tgl;
-
-                                    $sql = "SELECT SUM(jumlah) as jumlah FROM cart WHERE dibuat LIKE ".'"%'.$tgl.'%"';
-                                        $result = mysqli_query($koneksi,$sql);
-                                        $result = mysqli_fetch_array($result);
-                                        if(is_null($result[0])){
-                                            echo "<h3>0</h3>";
-                                        }
-                                        else{
-                                            echo "<h3>".($result[0])."</h3>";
-                                        }
-
+                                    $sql = "SELECT id_transaksi FROM transaksi WHERE status=0";
+                                    $result = mysqli_query($koneksi,$sql);
+                                    
+                                    $result = mysqli_num_rows($result);
+                                    if(is_null($result)){
+                                        echo "<h3>0</h3>";
+                                    }
+                                    else{
+                                        echo "<h3>".($result)."</h3>";
+                                    }
+                                    
+                                        
                                     ?>
                                 </div>
-                                    <div class="card-footer d-flex align-items-center justify-content-between">
-                                        <a class="small text-white stretched-link" href="order.php">Cek</a>
-                                        <div class="small text-white"></div>
-                                    </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="row">
-                            <div class="col-xl-6">
-                                <div class="card mb-4">
-                                    <div class="card-header">
-                                        <i class="fas fa-chart-area me-1"></i>
-                                        Area Chart Example
-                                    </div>
-                                    <div class="card-body"><canvas id="myAreaChart" width="100%" height="40"></canvas></div>
-                                </div>
+
+
+                        <div class="container mt-3">
+                        <!--<button type="button" class="btn btn-info mb-4" data-bs-toggle="modal" data-bs-target="#myModal">
+                            Add+
+                        </button>-->
+                        </div>
+
+                        <div class="card mb-4">
+                            <div class="card-header">
+                                <i class="fas fa-table me-1"></i>
+                                Order Tables
                             </div>
-                            <div class="col-xl-6">
-                                <div class="card mb-4">
-                                    <div class="card-header">
-                                        <i class="fas fa-chart-bar me-1"></i>
-                                        Bar Chart Example
-                                    </div>
-                                    <div class="card-body"><canvas id="myBarChart" width="100%" height="40"></canvas></div>
-                                </div>
+                            <div class="card-body">
+                                <table id="datatablesSimple">
+                                    <thead>
+                                        <tr>
+                                            <th>Transaksi ID</th>
+                                            <th>Total</th>
+                                            <th>Date</th>
+                                            <th>Status</th>
+                                        </tr>
+                                    </thead>
+
+                                    <tbody>
+                                    <?php
+                                    $sql = "SELECT * FROM transaksi";
+                                    
+                                    $result = mysqli_query($koneksi,$sql);
+                                    while($row = mysqli_fetch_row($result)){
+                                        echo "<tr>";
+                                        echo "<td>".$row[0]."</td>";
+                                        echo "<td>".$row[1]."</td>";
+                                        echo "<td>".$row[2]."</td>";
+                                        if($row[5]=="0"){
+                                            echo "<td>";
+                                            echo "<form method='post' action='bayar.php'><b>Total : Rp".$row[1]."</b><br/>";
+                                            echo "<input type='hidden' value ='".$row[0]."' name = 'id'>";
+                                            echo "<input type='hidden' value ='".$row[1]."' name = 'total'>";
+                                            echo "<input type='number' class='form-control-sm' placeholder='Total bayar' name = 'bayar'><br/>"; 
+                                            echo "<input type='submit' class='btn btn-info' style='margin-top:10px' value='Bayar'></input>";
+                                            echo "</form>";
+                                            echo "</td>";
+                                        }else{
+                                            echo "<td><button type='button' class='btn btn-primary' disabled>Selesai</button></td>";
+                                        }
+                
+                                    }
+                                    ?>
+                                        
+                                    </tbody>
+                                </table>
                             </div>
                         </div>
-                        
-                    
                     </div>
                 </main>
                 <footer class="py-4 bg-light mt-auto">
@@ -190,4 +219,47 @@
         <script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest" crossorigin="anonymous"></script>
         <script src="js/datatables-simple-demo.js"></script>
     </body>
+
+          <!-- The Modal -->
+  <div class="modal fade" id="myModal">
+    <div class="modal-dialog">
+      <div class="modal-content">
+      
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <h4 class="modal-title">Add New Order</h4>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+
+        <form method="post">
+
+
+
+        
+        <!-- Modal body -->
+        <div class="modal-body">
+          <input type="num" name="cart" class="form-control mt-3"" placeholder="Cart ID">
+
+
+        </div>
+        
+        <!-- Modal footer -->
+        <div class="modal-footer">
+          <button type="button" class="btn btn-success" name="add stock">submit</button>
+          <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+
+
+
+
+
+        </div>
+
+       </form>
+        
+      </div>
+    </div>
+  </div>
+
+
+
 </html>
