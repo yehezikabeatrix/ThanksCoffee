@@ -77,6 +77,7 @@ switch ($request) {
                 $total = $_POST['total'];
 
                 $add_transaksi = mysqli_query($koneksi, "INSERT INTO transaksi (id_pelanggan, total, status) VALUES ('$kode_pelanggan', '$total', '0')");
+                $cart_masuk_transaksi = mysqli_query($koneksi, "UPDATE cart SET status = 1 WHERE kode_pelanggan = '$kode_pelanggan'");
                 
                 if(add_transaksi){
                     echo json_encode(["message" => "success"]);

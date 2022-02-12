@@ -1,202 +1,129 @@
-<?php
-    include '../db/koneksi.php';
-    if(isset($_GET)){
-        if($_GET['edit']=='1'){
-            echo "<script>alert('Edit berhasil');</script>";
-        }
-    }
+<?php 
+include 'template.php'; 
+include 'helper.php';
 ?>
-
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="utf-8" />
-        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-        <meta name="description" content="" />
-        <meta name="author" content="" />
-        <title>Our Stock</title>
-        <link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet" />
-        <link href="css/styles.css" rel="stylesheet" />
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js" crossorigin="anonymous"></script>
-    </head>
-    <body class="sb-nav-fixed">
-        <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
-            <!-- Navbar Brand-->
-            <a class="navbar-brand ps-3" href="index.php">ThanksCoffee Cashier</a>
-            <!-- Sidebar Toggle-->
-            <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i class="fas fa-bars"></i></button>
-           
-            <!-- Navbar-->
-            <ul class="navbar-nav ms-auto ms-md-0 me-3 me-lg-4">
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
-                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                        <li><a class="dropdown-item" href="profil.php">Profile</a></li>
-                        <li><a class="dropdown-item" href="#!">Activity Log</a></li>
-                        <li><hr class="dropdown-divider" /></li>
-                        <li><a class="dropdown-item" href="logout.php">Logout</a></li>
-                    </ul>
-                </li>
-            </ul>
-        </nav>
-        <div id="layoutSidenav">
-            <div id="layoutSidenav_nav">
-                <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
-                    <div class="sb-sidenav-menu">
-                        <div class="nav">
-                            <div class="sb-sidenav-menu-heading">dashboard</div>
-                            <a class="nav-link" href="index.php">
-                                <div class="sb-nav-link-icon"><i class="fas fa-house-user"></i></div>
-                                Home
-                            </a>
-                            <a class="nav-link" href="order.php">
-                                <div class="sb-nav-link-icon"><i class="fas fa-bell"></i></div>
-                                Order
-                            </a>
-                            <a class="nav-link" href="stock.php">
-                                <div class="sb-nav-link-icon"><i class="far fa-eye"></i></div>
-                                Stock
-                            </a>
-
-                            <a class="nav-link" href="pengaturan.php">
-                                <div class="sb-nav-link-icon"><i class="fa fa-cog"></i></div>
-                                Setting
-                            </a>
-
-
-
-                            
-                            <div class="sb-sidenav-menu-heading">Addons</div>
-                            <a class="nav-link" href="charts.php">
-                                <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
-                                Charts
-                            </a>
-                            <a class="nav-link" href="tables.php">
-                                <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
-                                Tables
-                            </a>
-                        </div>
-                    </div>
-                    <div class="sb-sidenav-footer">
-                        <div class="small">Logged in as:</div>
-                        ThanksCoffee Admin
-                    </div>
-                </nav>
-            </div>
-            <div id="layoutSidenav_content">
+            <div id="layoutSidenav_content">               
                 <main>
                     <div class="container-fluid px-4">
                         <h1 class="mt-4">Product Stock</h1>
                         <ol class="breadcrumb mb-4">
-                            <li class="breadcrumb-item active">Welcome admin! </li>
+                            <li class="breadcrumb-item active">Stock your soul! </li>
                         </ol>
+                        <button type="button" class="btn btn-info-thanks mb-4" data-bs-toggle="modal" data-bs-target="#myModal">
+                            Add New Product
+                        </button>
                         <div class="row">
-                            <div class="col-xl-3 col-md-6">
-                                <div class="card bg-primary text-white mb-4">
+                            <div class="col-xl-3 col-md-6" style="width: 20%;">
+                                <div class="card text-white mb-4" style="background-color: sienna !important;">
                                     <div class="card-body"><h2>Coffee</h2>
-                                    <?php
-                                    $sql = "SELECT * FROM product WHERE kategori = 'coffee'";
-                                    $result = mysqli_query($koneksi,$sql);
-                                    if(is_null($result)){
-                                        echo "<h3>0</h3>";
-                                    }else{
-                                        echo "<h3>".(mysqli_num_rows($result))."</h3>";
-                                    }
-                                    ?>
-                                    </div>
-                                    <div class="card-footer d-flex align-items-center justify-content-between">
-                                        <a class="small text-white stretched-link" href="#">View Details</a>
-                                        <div class="small text-white"><i class="fas fa-angle-right"></i></div>
+                                        <?php
+                                        $sql = "SELECT * FROM product WHERE kategori = 'coffee'";
+                                        $result = mysqli_query($koneksi,$sql);
+                                        if(is_null($result)){
+                                            echo "<h3>0 product</h3>";
+                                        }else{
+                                            echo "<h3>".(mysqli_num_rows($result))." product</h3>";
+                                        }
+                                        ?>                                   
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-xl-3 col-md-6">
-                                <div class="card bg-warning text-white mb-4">
+                            <div class="col-xl-3 col-md-6" style="width: 20%;">
+                                <div class="card text-white mb-4" style="background-color: lightsalmon !important;">
                                     <div class="card-body"><h2>Non-coffee</h2>
-                                    <?php
-                                    $sql = "SELECT * FROM product WHERE kategori = 'non coffee'";
-                                    $result = mysqli_query($koneksi,$sql);
-                                    if(is_null($result)){
-                                        echo "<h3>0</h3>";
-                                    }else{
-                                        echo "<h3>".(mysqli_num_rows($result))."</h3>";
-                                    }
-                                    ?>
-
-                                    </div>
-                                    <div class="card-footer d-flex align-items-center justify-content-between">
-                                        <a class="small text-white stretched-link" href="#">View Details</a>
-                                        <div class="small text-white"><i class="fas fa-angle-right"></i></div>
+                                        <?php
+                                        $sql = "SELECT * FROM product WHERE kategori = 'non coffee'";
+                                        $result = mysqli_query($koneksi,$sql);
+                                        if(is_null($result)){
+                                            echo "<h3>0 product</h3>";
+                                        }else{
+                                            echo "<h3>".(mysqli_num_rows($result))." product</h3>";
+                                        }
+                                        ?>
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-xl-3 col-md-6">
-                                <div class="card bg-success text-white mb-4">
+                            <div class="col-xl-3 col-md-6" style="width: 20%;">
+                                <div class="card text-white mb-4" style="background-color: orange !important;">
                                     <div class="card-body"><h2>Snack</h2>
-                                    <?php
-                                    $sql = "SELECT * FROM product WHERE kategori = 'snack'";
-                                    $result = mysqli_query($koneksi,$sql);
-                                    if(is_null($result)){
-                                        echo "<h3>0</h3>";
-                                    }else{
-                                        echo "<h3>".(mysqli_num_rows($result))."</h3>";
-                                    }
-                                    ?>
-                                </div>
-                                    <div class="card-footer d-flex align-items-center justify-content-between">
-
-                                        <a class="small text-white stretched-link" href="#">View Details</a>
-                                        <div class="small text-white"><i class="fas fa-angle-right"></i></div>
-                                    </div>
+                                        <?php
+                                        $sql = "SELECT * FROM product WHERE kategori = 'snack'";
+                                        $result = mysqli_query($koneksi,$sql);
+                                        if(is_null($result)){
+                                            echo "<h3>0 product</h3>";
+                                        }else{
+                                            echo "<h3>".(mysqli_num_rows($result))." product</h3>";
+                                        }
+                                        ?>
+                                    </div> 
                                 </div>
                             </div>
-                            <div class="col-xl-3 col-md-6">
-                                <div class="card bg-danger text-white mb-4">
-                                    <div class="card-body"><h2>Merchant</h2>
-                                    <?php
-                                    $sql = "SELECT * FROM product WHERE kategori = 'merchant'";
-                                    $result = mysqli_query($koneksi,$sql);
-                                    if(is_null($result)){
-                                        echo "<h3>0</h3>";
-                                    }else{
-                                        echo "<h3>".(mysqli_num_rows($result))."</h3>";
-                                    }
-                                    ?>
-                                </div>
-                                    <div class="card-footer d-flex align-items-center justify-content-between">
-                                        <a class="small text-white stretched-link" href="#">View Details</a>
-                                        <div class="small text-white"><i class="fas fa-angle-right"></i></div>
+                            <div class="col-xl-3 col-md-6" style="width: 20%;">
+                                <div class="card text-white mb-4" style="background-color: burlywood !important;">
+                                    <div class="card-body"><h2>Beans</h2>
+                                        <?php
+                                        $sql = "SELECT * FROM product WHERE kategori = 'beans'";
+                                        $result = mysqli_query($koneksi,$sql);
+                                        if(is_null($result)){
+                                            echo "<h3>0 product</h3>";
+                                        }else{
+                                            echo "<h3>".(mysqli_num_rows($result))." product</h3>";
+                                        }
+                                        ?>
                                     </div>
-                                </div>
+                                </div>    
+                            </div>
+                            <div class="col-xl-3 col-md-6" style="width: 20%;">
+                                <div class="card text-white mb-4" style="background-color: cadetblue !important;">
+                                    <div class="card-body"><h2>Merchant</h2>
+                                        <?php
+                                        $sql = "SELECT * FROM product WHERE kategori = 'merchant'";
+                                        $result = mysqli_query($koneksi,$sql);
+                                        if(is_null($result)){
+                                            echo "<h3>0 product</h3>";
+                                        }else{
+                                            echo "<h3>".(mysqli_num_rows($result))." product</h3>";
+                                        }
+                                        ?>
+                                    </div>
+                                </div>    
                             </div>
                         </div>
+                    
                         
+                        <?php if(isset($_GET['edit_success'])){?>
+                            <div class="alert alert-success">
+                                <strong>Sukses! </strong>Stock product berhasil di update.
+                                <a href="stock.php" class="close" data-dismiss="alert" aria-label="close">&times; </a>
+                            </div>
+                        <?php }?> 
 
-                        
-                          
-                          <button type="button" class="btn btn-info mb-4" data-bs-toggle="modal" data-bs-target="#myModal">
-                            Add+
-                          </button>
-                        
+                        <?php if(isset($_GET['delete_success'])){?>
+                            <div class="alert alert-success">
+                                <strong>Sukses! </strong>Product berhasil di hapus.
+                                <a href="stock.php" class="close" data-dismiss="alert" aria-label="close">&times; </a>
+                            </div>
+                        <?php }?> 
 
 
 
                         <div class="card mb-4">
-                            <div class="card-header">
+                            <div class="card-header" style="color: #ffff;">
                                 <i class="fas fa-table me-1"></i>
                                 Stock Tables
                             </div>
-                            <div class="card-body">
-                                <table id="datatablesSimple">
+                            <div class="card-body" style="color: #ffff;">
+                                <table id="datatablesSimple" style="color: #ffff;">
                                     <thead>
                                         <tr>
                                             <th>ID</th>
                                             <th>Product</th>
+                                            <th>Nama Product</th>
                                             <th>Category</th>
                                             <th>Stock</th>
                                             <th>Price</th>
-                                            <th>Edit</th>
+                                            <th>Status</th>
+                                            <th>Action</th>
                                         </tr>
                                     </thead>
 
@@ -209,101 +136,70 @@
                                     while($row = mysqli_fetch_row($result)){
                                        echo "<tr>";
                                         echo "<td>".$row[0]."</td>";
+                                        echo "<td><img src='".$row[5]."'height='100' width='100'></td>";
                                         echo "<td>".$row[1]."</td>";
                                         echo "<td>".$row[2]."</td>";
-                                        echo "<td>".$row[3]."</td>";
                                         echo "<td>".$row[4]."</td>";
+                                        echo "<td>Rp ".rupiah($row[3])."</td>";
                                         echo "<td>";
-                                            echo "<form method='post' action='editstock.php'>";
+                                            echo "<form method='post' action='function/editstock.php'>";
                                             echo "<input type='hidden' value ='".$row[0]."' name = 'id'>";
-                                            echo "<input type='number' class='form-control-sm' placeholder='Jumlah sekarang' name = 'param'><br/>"; 
-                                            echo "<input type='submit' class='btn btn-info' style='margin-top:10px' value='edit'></input>";
+                                            echo "<input type='number' class='form-control-sm' style='border-width:0' placeholder='Update Stock' name = 'param'><br/>"; 
+                                            echo "<input type='submit' class='btn btn-warning' style='margin-top:10px' value='Update'></input>";
+                                            echo "</form>";
+                                        echo "</td>";
+                                        echo "<td>";
+                                            echo "<form method='post' action='function/delete_product.php'>";
+                                            echo "<input type='hidden' value ='".$row[0]."' name = 'id_product'>";
+                                            echo "<input type='submit' class='btn btn-danger' value='Delete'></input>";
                                             echo "</form>";
                                         echo "</td>";
                                         echo "</tr>";
                                     }
                                     ?>
-
-
-
-                                        
-                                    
                                     </tbody>
                                 </table>
                             </div>
                         </div>
                     </div>
                 </main>
-                <footer class="py-4 bg-light mt-auto">
-                    <div class="container-fluid px-4">
-                        <div class="d-flex align-items-center justify-content-between small">
-                            <div class="text-muted">Copyright &copy; Your Website 2021</div>
-                            <div>
-                                <a href="#">Privacy Policy</a>
-                                &middot;
-                                <a href="#">Terms &amp; Conditions</a>
-                            </div>
-                        </div>
-                    </div>
-                </footer>
-            </div>
-        </div>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
-        <script src="js/scripts.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
-        <script src="assets/demo/chart-area-demo.js"></script>
-        <script src="assets/demo/chart-bar-demo.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest" crossorigin="anonymous"></script>
-        <script src="js/datatables-simple-demo.js"></script>
-    </body>
+                <?php include 'footer.php' ?>
 
 
-      <!-- The Modal -->
-  <div class="modal fade" id="myModal">
+<!-- The Modal -->
+<div class="modal fade" id="myModal">
     <div class="modal-dialog">
       <div class="modal-content">
       
         <!-- Modal Header -->
         <div class="modal-header">
-          <h4 class="modal-title">Add stock+ </h4>
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Add Product </h4>
         </div>
 
-        <form method="post" action = "addstock.php">
+        <form method="post" action = "function/addstock.php" enctype="multipart/form-data">
+            <!-- Modal body -->
+            <div class="modal-body" data-closable>
+            <input type="text" name="Nama" class="form-control" placeholder="Nama Product" required>
+            <select name="kategori" id="" class="form-control mt-3" required>
+                <option value="coffee">Coffee</option>
+                <option value="non coffee">Non-Coffee</option>
+                <option value="snack">Snack</option>
+                <option value="merchant">Beans</option>
+                <option value="merchant">Merchant</option>
+            </select>
+            <input type="num" name="stock" class="form-control mt-3" placeholder="Stock" required>
+            <input type="num" name="harga" class="form-control mt-3" placeholder="Harga" required>
+            <input type="file" name="foto" class="form-control mt-3" placeholder="Foto Product" required>
 
-
-
-        
-        <!-- Modal body -->
-        <div class="modal-body" data-closable>
-          <input type="text" name="Nama" class="form-control" placeholder="Nama Product">
-          <select name="kategori" id="" class="form-control mt-3">
-            <option value="coffee">Coffee</option>
-            <option value="non coffe">Non-Coffee</option>
-            <option value="snack">Snack</option>
-            <option value="merchant">Merchant</option>
-          </select>
-          <input type="num" name="stock" class="form-control mt-3" placeholder="Stock">
-          <input type="num" name="harga" class="form-control mt-3" placeholder="Harga">
-
-
-        </div>
-        
-        <!-- Modal footer -->
-        <div class="modal-footer">
-        <input type="submit" class="btn btn-success" name="add stock" value = "Submit"></input>
-          <button type="button" class="btn btn-danger" data-bs-target="#myModal" data-bs-toggle="collapse" data-close>Close</button>
-
-
-
-
-
-        </div>
-
+            </div>
+            
+            <!-- Modal footer -->
+            <div class="modal-footer">
+            <input type="submit" class="btn btn-success" name="add stock" value = "Submit"></input>
+            <button type="button" class="btn btn-danger" data-bs-target="#myModal" data-bs-toggle="collapse" href="stock.php" data-close>Close</button>
+            </div>
        </form>
         
       </div>
     </div>
-  </div>
-
-</html>
+  </div>                

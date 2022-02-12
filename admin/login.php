@@ -1,7 +1,6 @@
 <?php
 
 include '../db/koneksi.php';
-$pdo = pdo_connect();
 
 if(isset($_POST['submit'])){
 
@@ -10,10 +9,8 @@ if(isset($_POST['submit'])){
     // enkripsi password
     $password = md5($_POST["password"]);
 
-    $stmt = $pdo->prepare('SELECT * from user WHERE username = ?');
-    $stmt->execute([$username]);
-
-    $user = $stmt->fetch(PDO::FETCH_ASSOC);
+    $stmt = mysqli_query($koneksi, "SELECT * from user WHERE username = '$username'");
+    $user = $stmt->fetch_assoc(); 
 
     if($user){
         // verifikasi password
