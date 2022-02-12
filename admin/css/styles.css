@@ -41,7 +41,7 @@
   --bs-danger: #dc3545;
   --bs-light: #f8f9fa;
   --bs-dark: #212529;
-  --bs-primary-rgb: 13, 110, 253;
+  --bs-primary-rgb: #cb924c;
   --bs-secondary-rgb: 108, 117, 125;
   --bs-success-rgb: 25, 135, 84;
   --bs-info-rgb: 13, 202, 240;
@@ -84,7 +84,7 @@ body {
   line-height: var(--bs-body-line-height);
   color: var(--bs-body-color);
   text-align: var(--bs-body-text-align);
-  background-color: #cbba1980;
+  background-color: #f3f3f3;
   -webkit-text-size-adjust: 100%;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
@@ -3139,6 +3139,19 @@ textarea.form-control-lg {
   background-color: #0dcaf0;
   border-color: #0dcaf0;
 }
+
+.btn-info-thanks {
+  font-weight: 700;
+  color: #cb924c ;
+  background-color: #2e4b31;
+  border-color: #2e4b31;
+}
+
+.btn-info-thanks:hover {
+  color: white;
+}
+
+
 .btn-info:hover {
   color: #000;
   background-color: #31d2f2;
@@ -4972,6 +4985,13 @@ textarea.form-control-lg {
 }
 .alert-success .alert-link {
   color: #0c4128;
+}
+
+.alert-success .close{
+  position:relative;
+  color:inherit; 
+  text-decoration: none;
+  float: right;
 }
 
 .alert-info {
@@ -7823,7 +7843,7 @@ textarea.form-control-lg {
 
 .bg-primary {
   --bs-bg-opacity: 1;
-  background-color: rgba(var(--bs-light-rgb), var(--bs-bg-opacity)) !important;
+  background-color: rgba(var(--bs-primary-rgb), var(--bs-bg-opacity)) !important;
 }
 
 .bg-secondary {
@@ -11424,7 +11444,7 @@ body {
   z-index: 1039;
 }
 .sb-topnav .navbar-brand {
-  width: 225px;
+  width: 230px;
   margin: 0;
 }
 .sb-topnav.navbar-dark #sidebarToggle {
@@ -11481,11 +11501,11 @@ body {
 }
 
 .sb-sidenav-dark {
-  background-color: #212529;
+  background-color: #2e4b31;
   color: rgba(255, 255, 255, 0.5);
 }
 .sb-sidenav-dark .sb-sidenav-menu .sb-sidenav-menu-heading {
-  color: rgba(255, 255, 255, 0.25);
+  color: #cb924c;
 }
 .sb-sidenav-dark .sb-sidenav-menu .nav-link {
   color: rgba(255, 255, 255, 0.5);
@@ -11506,7 +11526,7 @@ body {
   color: #fff;
 }
 .sb-sidenav-dark .sb-sidenav-footer {
-  background-color: #343a40;
+  background-color: #2e4b31;
 }
 
 .sb-sidenav-light {

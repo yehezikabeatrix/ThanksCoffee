@@ -1,25 +1,22 @@
 <?php
 
 include 'db/koneksi.php';
-$pdo = pdo_connect();
 
 if(isset($_POST['submit'])){
 
     $nama = $_POST["nama_pelanggan"];
     $tanggal = date("Y-m-d");
 
-    $check_nama = $pdo->prepare('SELECT * from pelanggan WHERE nama_pelanggan = ? AND tanggal = ?');
-    $check_nama->execute([$nama, $tanggal]);
+    $check_nama = mysqli_query($koneksi, "SELECT * from pelanggan WHERE nama_pelanggan = '$nama' AND tanggal = '$tanggal'");
 
-    $check = $check_nama->fetch(PDO::FETCH_ASSOC);
+    $check = $check_nama->fetch_assoc(); 
 
     if($check) {
         if ($nama == $check["nama_pelanggan"]){
             $nama_error = "Maaf username $nama sudah ada !";
         }
     } else {
-        $stmt = $pdo->prepare('INSERT INTO pelanggan (nama_pelanggan) VALUES(:nama)');
-        $stmt->execute(array(':nama' => $nama));
+        $stmt = mysqli_query($koneksi, "INSERT INTO pelanggan (nama_pelanggan, tanggal) VALUES('$nama', '$tanggal')");
         
         // buat Session
         session_start();
