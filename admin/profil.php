@@ -15,7 +15,7 @@
                         
                         <div class="row">
                             <div class="">
-                                <div class="card bg-primary text-white mb-4">
+                                <div class="card text-white mb-4" style="background-color: #2e4b31">
                                     <div class="card-body"><h2>Nama</h2>
                                     <?php
                                         echo "<p>".ucfirst($_SESSION["user"]["username"])."</p>";
@@ -24,7 +24,7 @@
                                 </div>
                             </div>
                             <div class="">
-                                <div class="card bg-warning text-white mb-4">
+                                <div class="card text-white mb-4" style="background-color: #2e4b31">
                                     <div class="card-body"><h2>Password</h2>
                                     <p><i>secured</i></p>
                                 </div>
@@ -32,7 +32,7 @@
                                 </div>
                             </div>
                             <div class="">
-                                <div class="card bg-success text-white mb-4">
+                                <div class="card text-white mb-4" style="background-color: #2e4b31">
                                     <div class="card-body"><h2>Jabatan</h2>
                                     <?php
                                     echo "<p>".ucfirst($_SESSION["user"]["jabatan"])."</p>";
@@ -43,7 +43,7 @@
                                 </div>
                             </div>
                             <div class="">
-                                <div class="card bg-danger text-white mb-4">
+                                <div class="card text-white mb-4" style="background-color: #2e4b31">
                                     <div class="card-body"><h2>Waktu login</h2>
                                     <?php
                                     echo "<p>".ucfirst($_SESSION["user"]["time"])."</p>";
