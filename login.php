@@ -4,7 +4,14 @@ include 'db/koneksi.php';
 
 if(isset($_POST['submit'])){
 
-    $nama = $_POST["nama_pelanggan"];
+    function validate($data){ 
+        $data = trim($data); 
+        $data = stripslashes($data); 
+        $data = htmlspecialchars($data); 
+        return $data; 
+    }
+
+    $nama = validate($_POST["nama_pelanggan"]);
     $tanggal = date("Y-m-d");
 
     $check_nama = mysqli_query($koneksi, "SELECT * from pelanggan WHERE nama_pelanggan = '$nama' AND tanggal = '$tanggal'");

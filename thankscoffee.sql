@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 12, 2022 at 05:49 AM
+-- Generation Time: Feb 17, 2022 at 06:23 PM
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 8.1.1
 
@@ -52,7 +52,25 @@ INSERT INTO `cart` (`id_cart`, `kode_pelanggan`, `kode_product`, `jumlah`, `dibu
 (194, 156, 17, 2, '2022-02-12', 0),
 (195, 157, 7, 1, '2022-02-14', 1),
 (196, 157, 9, 1, '2022-02-14', 1),
-(197, 157, 10, 4, '2022-02-14', 1);
+(197, 157, 10, 4, '2022-02-14', 1),
+(198, 158, 15, 1, '2022-02-17', 1),
+(199, 158, 19, 1, '2022-02-17', 1),
+(200, 158, 17, 2, '2022-02-17', 1),
+(201, 158, 14, 2, '2022-02-17', 1),
+(202, 158, 13, 2, '2022-02-17', 1),
+(203, 159, 7, 1, '2022-02-17', 0),
+(204, 159, 9, 1, '2022-02-17', 0),
+(205, 159, 15, 1, '2022-02-17', 0),
+(206, 159, 17, 1, '2022-02-17', 0),
+(207, 159, 19, 1, '2022-02-17', 0),
+(208, 159, 13, 1, '2022-02-17', 0),
+(209, 159, 14, 1, '2022-02-17', 0),
+(210, 162, 31, 1, '2022-02-17', 1),
+(211, 162, 33, 1, '2022-02-17', 1),
+(212, 162, 26, 1, '2022-02-17', 1),
+(213, 162, 27, 3, '2022-02-17', 1),
+(214, 162, 29, 2, '2022-02-17', 1),
+(215, 162, 30, 1, '2022-02-17', 1);
 
 -- --------------------------------------------------------
 
@@ -74,7 +92,15 @@ INSERT INTO `pelanggan` (`id_pelanggan`, `nama_pelanggan`, `tanggal`) VALUES
 (154, 'adek', '2022-02-12'),
 (155, 'as', '2022-02-12'),
 (156, 'ssasa', '2022-02-12'),
-(157, 'dq', '2022-02-12');
+(157, 'dq', '2022-02-12'),
+(158, 'adek', '2022-02-17'),
+(159, 'alo', '2022-02-17'),
+(160, 'username', '2022-02-17'),
+(161, 'name', '2022-02-17'),
+(162, 'as', '2022-02-17'),
+(163, 'ade', '2022-02-17'),
+(164, 'lele', '2022-02-17'),
+(165, 'lo', '2022-02-17');
 
 -- --------------------------------------------------------
 
@@ -126,7 +152,21 @@ INSERT INTO `product` (`id_product`, `nama`, `kategori`, `harga`, `stock`, `gamb
 (14, 'Beef Burger', 'snack', 25000, 30, '../asset/product/snack_beef-burger.jpg'),
 (15, 'Ice Berry Milkshake', 'non coffee', 20000, 30, '../asset/product/non-coffee_ice-berry-milkshake.jpg'),
 (17, 'Ice Choco Milkshake', 'non coffee', 20000, 30, '../asset/product/non-coffee_ice-choco-milkshake.jpg'),
-(19, 'Ice Matcha Latte', 'non coffee', 20000, 30, '../asset/product/non-coffee_ice-matcha-latte.jpg');
+(19, 'Ice Matcha Latte', 'non coffee', 20000, 30, '../asset/product/non-coffee_ice-matcha-latte.jpg'),
+(20, 'Ice Avocado Coffee', 'coffee', 20000, 30, '../asset/product/coffee_ice-avocado-coffee.jpg'),
+(21, 'Ice Coffee Gula Aren', 'coffee', 18000, 15, '../asset/product/coffee_ice-coffee.jpg'),
+(22, 'Ice Latte Macciato', 'coffee', 25000, 100, '../asset/product/coffee_latte-macciato.jpg'),
+(23, 'Ice Avocado Milk', 'non coffee', 19000, 50, '../asset/product/non-coffee_avocado_latte.jpg'),
+(24, 'Ice Milo', 'non coffee', 23000, 90, '../asset/product/non-coffee_ice-milo.jpg'),
+(25, 'Matcha Latte', 'non coffee', 20000, 39, '../asset/product/non-coffee_matcha-latte.jpg'),
+(26, 'Americano Malang 500g', 'beans', 40000, 10, '../asset/product/beans_americano_malang.jpg'),
+(27, 'Java Origin 500g', 'beans', 40000, 10, '../asset/product/beans_java_origin.jpg'),
+(28, 'Robusta Lawu', 'beans', 40000, 10, '../asset/product/beans_robusta_lawu.jpg'),
+(29, 'Longsleeve L', 'merchant', 100000, 0, '../asset/product/merch_longsleeve.jpg'),
+(30, 'Totebag', 'merchant', 50000, 20, '../asset/product/merch_totebag.jpg'),
+(31, 'Chicken Wings', 'snack', 60000, 20, '../asset/product/snack_chicken_wings.jpg'),
+(32, 'Chicken Burger', 'snack', 25000, 20, '../asset/product/snack_chicken-burger.jpg'),
+(33, 'Croffle', 'snack', 20000, 20, '../asset/product/snack_croffle.jpg');
 
 -- --------------------------------------------------------
 
@@ -172,7 +212,10 @@ INSERT INTO `transaksi` (`id_transaksi`, `id_pelanggan`, `total`, `bayar`, `kemb
 (45, 154, 78000, 100000, 22000, 1, '2022-02-12'),
 (46, 155, 124000, 200000, 76000, 1, '2022-02-12'),
 (47, 156, 130000, 0, 0, 2, '2022-02-12'),
-(48, 157, 78000, 100000, 22000, 1, '2022-02-14');
+(48, 157, 78000, 100000, 22000, 1, '2022-02-14'),
+(101, 158, 180000, 200000, 20000, 1, '2022-02-17'),
+(102, 159, 128000, 0, 0, 2, '2022-02-17'),
+(103, 162, 490000, 500000, 10000, 1, '2022-02-17');
 
 -- --------------------------------------------------------
 
@@ -192,6 +235,7 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`username`, `password`, `jabatan`, `avatar`) VALUES
+('karyawan', '9e014682c94e0f2cc834bf7348bda428', 'karyawan', '../asset/avatar/father.jfif'),
 ('manajer', '69b731ea8f289cf16a192ce78a37b4f0', 'manajer', '../asset/avatar/manajer.jfif'),
 ('rojali', 'a0cac7368165fdbfdf3cf40d41f2a07c', 'karyawan', '../asset/avatar/rojali.jfif'),
 ('sinta', '08ca451b5ef1a7c86763d31e7711a522', 'karyawan', '../asset/avatar/sinta.jfif');
@@ -260,25 +304,25 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `cart`
 --
 ALTER TABLE `cart`
-  MODIFY `id_cart` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=198;
+  MODIFY `id_cart` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=216;
 
 --
 -- AUTO_INCREMENT for table `pelanggan`
 --
 ALTER TABLE `pelanggan`
-  MODIFY `id_pelanggan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=158;
+  MODIFY `id_pelanggan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=166;
 
 --
 -- AUTO_INCREMENT for table `product`
 --
 ALTER TABLE `product`
-  MODIFY `id_product` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `id_product` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
 
 --
 -- AUTO_INCREMENT for table `transaksi`
 --
 ALTER TABLE `transaksi`
-  MODIFY `id_transaksi` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=49;
+  MODIFY `id_transaksi` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=104;
 
 --
 -- Constraints for dumped tables
