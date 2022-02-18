@@ -184,7 +184,7 @@ include 'helper.php';
                 <option value="coffee">Coffee</option>
                 <option value="non coffee">Non-Coffee</option>
                 <option value="snack">Snack</option>
-                <option value="merchant">Beans</option>
+                <option value="beans">Beans</option>
                 <option value="merchant">Merchant</option>
             </select>
             <input type="num" name="stock" class="form-control mt-3" placeholder="Stock" required>

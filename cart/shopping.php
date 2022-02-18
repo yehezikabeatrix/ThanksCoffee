@@ -7,7 +7,7 @@ $dataProductCoffee = mysqli_query($koneksi, "SELECT * FROM product WHERE product
 $dataProductNonCoffee = mysqli_query($koneksi, "SELECT * FROM product WHERE product.kategori = 'non coffee' ORDER BY nama ASC");
 $dataProductSnack = mysqli_query($koneksi, "SELECT * FROM product WHERE product.kategori = 'snack' ORDER BY nama ASC");
 $dataProductBeans = mysqli_query($koneksi, "SELECT * FROM product WHERE product.kategori = 'beans' ORDER BY nama ASC");
-$dataProductMerch = mysqli_query($koneksi, "SELECT * FROM product WHERE product.kategori = 'merch' ORDER BY nama ASC");
+$dataProductMerch = mysqli_query($koneksi, "SELECT * FROM product WHERE product.kategori = 'merchant' ORDER BY nama ASC");
 ?>
 
 
@@ -104,7 +104,7 @@ $dataProductMerch = mysqli_query($koneksi, "SELECT * FROM product WHERE product.
                 <div class="product-box">
                     <img class="product-img" src="<?= $product_merch->gambar ?>" alt="<?= $product_merch->nama ?>">
 					<h4 class="product-tittle"><?= $product_merch->nama ?></h4>
-					<span class="product-price">Rp <?= $product_merch->harga ?></span>
+					<span class="product-price">Rp <?= rupiah($product_merch->harga) ?></span>
 					<a class="add-cart" onclick="addCart(<?= $product_merch->id_product ?>)">
                         <img src="..\asset\icon\cart.png" width="20"/>
                     </a>

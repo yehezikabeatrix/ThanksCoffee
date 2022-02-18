@@ -14,7 +14,7 @@
 
 body {
     width: 100%;
-    min-height: 100vh;
+    min-height: 50vh;
     overflow-x: hidden;
     background: #f3f3f3;
 }
@@ -22,7 +22,7 @@ body {
 section {
     position: relative;
     width: 100%;
-    min-height: 100vh;
+    min-height: 50vh;
     padding: 4rem 0 3rem;
     display: inline-block;
     justify-content: center;

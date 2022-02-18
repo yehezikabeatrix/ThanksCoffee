@@ -1,13 +1,15 @@
 <?php
 
 include '../db/koneksi.php';
+include 'helper.php';
 
 if(isset($_POST['submit'])){
 
     // filter data yang diinputkan
-    $username = $_POST["username"];
+    $username = validate($_POST["username"]);
     // enkripsi password
-    $password = md5($_POST["password"]);
+    $val_pass = validate($_POST["password"]);
+    $password = md5($val_pass);
 
     $stmt = mysqli_query($koneksi, "SELECT * from user WHERE username = '$username'");
     $user = $stmt->fetch_assoc(); 
