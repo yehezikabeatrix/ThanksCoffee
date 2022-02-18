@@ -2,7 +2,7 @@
 :star: Star Us on Github - it helps!
 <div align="center">
 
-<p><img src="./documentation/pelanggan.png" width="900"></p>
+<p><img src="./documentation/banner.gif" width="900"></p>
 <a href="https://github.com/yehezikabeatrix/ThanksCoffee"><img src="https://badges.frapsoft.com/os/v1/open-source.svg?v=103"></a>
 <a href="https://github.com/yehezikabeatrix/ThanksCoffee"><img src="https://img.shields.io/badge/Built%20by-developers%20%3C%2F%3E-0059b3"></a>
 <a href="https://github.com/yehezikabeatrix/ThanksCoffee/commits/master"><img src="https://img.shields.io/badge/maintained-yes-green.svg"></a>  
@@ -12,14 +12,18 @@
 
 </div>
 
-<strong>ThanksCoffee Website</strong> adalah Sistem Kasir (Point of Sales), Manajemen Produk Toko, dan Halaman Pembelian Kopi berbasis website yang dibuat tanpa mengunakan framework tambahan dan dapat diakses tanpa menggunakan Internet. 
+**ThanksCoffee Website** merupakan perpaduan Aplikasi Sistem Kasir (Point of Sales), Manajemen Toko, dan Halaman Pembelian Kopi berbasis website yang digunakan untuk mengelola seluruh proses bisnis pada sebuah toko kopi ThanksCoffee. Aplikasi ini dibuat tanpa mengunakan framework tambahan dan dapat diakses tanpa menggunakan Internet. 
+
+Aplikasi **ThanksCoffee Website** sendiri hadir sebagai langkah efisiensi dalam menangani penjualan produk kopi kepada para pelanggan. Jika dahulu toko-toko cabang hanya menggunakan kalkulator manual atau komputer dengan software yang belum terintegrasi, maka **ThanksCoffee Website** hadir sebagai inovator untuk menjawab pertumbuhan toko-toko cabang yang terus bertambah.
+
 #### ⚡️ Kelebihan dari aplikasi ini adalah :
- - UI UX yang sangat dipikirkan
+ - Pemuja UI UX 
  - Dibangun menggunakan `HTML dan CSS`
  - Animasi menggunakan `CSS dan JS`
- - Database `MySQL`
- - Fitur `Pembersihan Database Otomatis`
+ - Database menggunakan `MySQL`
+ - Terdapat fitur `Pembersihan Database Otomatis`
  - Mudah untuk dimodifikasi
+ - Website Dinamis
  - Dapat diakses tanpa menggunakan internet
 
 #### ⚡️ Role yang terdapat di aplikasi ini adalah : 
@@ -34,22 +38,23 @@
  - Mengurangi beban manajer untuk memonitoring toko kopi
  - Menambah keunikan toko kopi
  - Menarik pelanggan yang *instagrammable* dan haus modernisasi
+ - Efisiensi proses bisnis
 
 ## Requirements 🔧
-Siapkan beberapa aplikasi berikut untuk menjalankan <strong>ThanksCoffee Website</strong> :
+Tentu saja diperlukan peralatan untuk setiap perang. Maka, siapkan beberapa aplikasi berikut untuk menjalankan **ThanksCoffee Website** dengan sukses :
  - XAMPP (versi 3.3.0 atau versi terbaru).
  - PHP versi 5.6 atau terbaru
- - Teks Editor
+ - Teks Editor (disarankan : Visual Studio Code, Sublime)
  - Web Browser
 
 ## Instalasi 🔨
 1. Clone atau download source code
-    - Para terminal, clone repo `git clone git@github.com:yehezikabeatrix/ThanksCoffee.git`
+    - Pada terminal, clone repo `git clone git@github.com:yehezikabeatrix/ThanksCoffee.git`
     - atau `git clone https://github.com/yehezikabeatrix/ThanksCoffee.git`
     - Jika tidak menggunakan Git, silakan **Download Zip** dan *extract* pada direktori web server (misal: xampp/htdocs)
 2. Buat **database baru pada mysql** untuk aplikasi ini dengan nama "thankscoffee"
-3. Import database "thankscoffee" dengan file `thankscoffee.sql`
-4. Pergi ke `db/koneksi.php' lalu edit host, username, dan password sesuai dengan milik kalin, defaultnya seperti ini:
+3. Import database "thankscoffee" menggunakan file `thankscoffee.sql`
+4. Pergi ke `db/koneksi.php' lalu edit host, username, dan password sesuai dengan milik kalian, defaultnya seperti ini:
     ```php
     $DATABASE_HOST = 'localhost';
     $DATABASE_USER = 'root';
@@ -58,7 +63,7 @@ Siapkan beberapa aplikasi berikut untuk menjalankan <strong>ThanksCoffee Website
 5. Selesai    
 
 ## Keamanan 🔐
-Beberapa fitur keamanan yang diterapkan di aplikasi ini meliputi:
+Untuk menjaga sistem, diperluan fitur keamanan agar supaya baik dari pihak manajemen dan pelanggan merasa aman. Beberapa fitur keamanan yang diterapkan di aplikasi ini meliputi:
 1. Validasi form input
 2. Password handling
 
@@ -66,7 +71,7 @@ Beberapa fitur keamanan yang diterapkan di aplikasi ini meliputi:
 Fitur akan dijelaskan berdasarkan Role yang dimiliki aplikasi ini. Berikut penjelasannya:
 
 ### Manajer 👨‍💼
-<p align="center"><img src="./documentation/manajer.png" width="900"></p>
+<p><img src="./documentation/manajer.png" width="900"></p>
 
 **Manajer** adalah orang dengan jabatan tertinggi dibagian Toko Kopi. Role ini memiliki kelebihan untuk melihat data-data penting toko dan dapat melakukan perubahan juga padanya. Halaman manajer dapat diakses menggunakan URL `localhost:/ThanksCoffee/admin/index.php`
 
@@ -96,8 +101,8 @@ Fitur akan dijelaskan berdasarkan Role yang dimiliki aplikasi ini. Berikut penje
   - Manajemen Laporan
     - Grafik penjualan produk hari ini
     - Grafik pemasukan perbulan
-    - Penjualan Per Bulan
-    - Penjualan Per Tanggal
+    - Cetak Penjualan Per Bulan
+    - Cetak Penjualan Per Tanggal
   - Manajemen User
     - List User
     - Tambah User Baru
@@ -107,9 +112,17 @@ Fitur akan dijelaskan berdasarkan Role yang dimiliki aplikasi ini. Berikut penje
     - Edit Alamat Cabang
     - Edit No telepon Cabang
     - Edit Email Cabang
+- **Dokumentasi** <br>
+<img src="./documentation/admin_login.png" width="30%"></img>
+<img src="./documentation/admin_addproduct.png" width="30%"></img>
+<img src="./documentation/admin_laporan.png" width="30%"></img>
+<img src="./documentation/admin_cetaklaporan.png" width="30%"></img>
+<img src="./documentation/admin_setting.png" width="30%"></img>
+<img src="./documentation/admin_user.png" width="30%"></img>
+
 
 ### Karyawan 🤵
-<p align="center"><img src="./documentation/karyawan.png" width="900"></p>
+<p><img src="./documentation/karyawan.png" width="900"></p>
 
 **Karyawan** adalah orang yang betugas sebagai kasir dari toko. Tugasnya berhubungan langsung dengan pelanggan dan melayani pesanan mereka. Halaman karyawan dapat diakses menggunakan URL `localhost:/ThanksCoffee/admin/index.php`
 
@@ -136,28 +149,44 @@ Fitur akan dijelaskan berdasarkan Role yang dimiliki aplikasi ini. Berikut penje
     - Input Produk Baru
     - Edit Produk (Jumlah stok)
     - Hapus Produk
+- **Dokumentasi** <br>
+<img src="./documentation/admin_login.png" width="30%"></img>
+<img src="./documentation/admin_order.png" width="30%"></img>
+<img src="./documentation/admin_product.png" width="30%"></img>
+<img src="./documentation/admin_changepass.png" width="30%"></img>
+<img src="./documentation/admin_bayar.png" width="30%"></img>
+<img src="./documentation/admin_updatestok.png" width="30%"></img>
+
 
 ### Pelanggan 👨‍🎓
-<p align="center"><img src="./documentation/pelanggan.png" width="900"></p>
+<p><img src="./documentation/pelanggan.png" width="900"></p>
 
 **Pelanggan** adalah orang yang membeli produk di toko. Setiap pelanggan mendapatkan laptop atau PC masing-masing untuk memesan pesanannya. Halaman pelanggan dapat diakses menggunakan URL `localhost:/ThanksCoffee/index.php`
 
-#### Fitur Yang Dimiliki
-1. Login
+- **Fitur Yang Dimiliki**
+  - Login
     - Login dengan username dan Logout
     - Username tidak boleh sama di hari yang sama
-2. Halaman Utama
+  - Halaman Utama
     - Section Promo
     - Section Why Choose US
-    - Section Product
+    - Section Produk
     - Section Testimoni
     - Section Feedback
-3. Halaman Shopping
-4. Halaman Check Out
-5. Cetak Invoice Pesanan
+  - Halaman Shopping
+  - Halaman Check Out
+  - Cetak Invoice Pesanan
+
+- **Dokumentasi** <br>
+<img src="./documentation/pelanggan_login.png" width="30%"></img>
+<img src="./documentation/pelanggan_whychoose.png" width="30%"></img>
+<img src="./documentation/pelanggan_product.png" width="30%"></img>
+<img src="./documentation/pelanggan_shopping.png" width="30%"></img>
+<img src="./documentation/pelanggan_cart.png" width="30%"></img>
+<img src="./documentation/pelanggan_invoice.png" width="30%"></img>
 
 ## Made with ❤️ by 
 
-| <img src = "https://avatars.githubusercontent.com/u/73974755?v=4" width='150px'> | <img src = "https://avatars.githubusercontent.com/u/89673572?v=4" width='150px'> | 
+| <img src = "https://avatars.githubusercontent.com/u/73974755?v=4" width='200px'> | <img src = "https://avatars.githubusercontent.com/u/89673572?v=4" width='200px'> | 
 | :---------: | :---------: | 
 |     [Yehezika Beatrix](https://github.com/yehezikabeatrix) |    [Adek Muhammad](https://github.com/adekmzrk)      |
